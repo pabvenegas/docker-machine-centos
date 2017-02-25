@@ -10,6 +10,9 @@ Vagrant.configure(2) do |config|
 
   config.vm.provider :virtualbox do |v|
     v.customize ["modifyvm", :id, "--memory", 1792]
+    # http://askubuntu.com/questions/238040/how-do-i-fix-name-service-for-vagrant-client
+    # VBoxManage modifyvm [name] --natdnshostresolver1 on
+    v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   end
 
   # vagrant plugin install vagrant-vbguest
